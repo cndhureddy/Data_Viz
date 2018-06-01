@@ -6,8 +6,6 @@ import json
 def find(s, ch):
     return [i for i, ltr in enumerate(s) if ltr == ch]
 year_array = []
-month_array = []
-due_date_array = []
 with open('clt.project.dbo.json') as json_data:
    d = json.load(json_data)
    #print(d)
@@ -25,15 +23,11 @@ for i in range(0,len(temp_d1)):
 	
 	index_month=find(due_date,"-")
 	#print(index_month)
-	year_array.append(due_date[0:4])
-	due_date_array.append(due_date[0:10])
-	month_array.append(due_date[5:7])	
+	year_array.append(due_date[0:4])	
 unique_year=list(set(year_array))
-unique_month=list(set(month_array))
 submitted_dic={}
 not_submitted_dic={}
 final_array=[]
-print(unique_month)
 for i in range(0,len(unique_year)):
 	count_submitted=0;
 	count_not_submitted=0;
@@ -43,27 +37,23 @@ for i in range(0,len(unique_year)):
 		d1=temp_d1[j]
 		due_date=d1["due_date"]
 		year_temp=due_date[0:4]
-		month_temp = due_date[5:7]
 		if int(year_temp)==int(unique_year[i]):
-			for k in range(0,len(unique_month)):
-				if int(month_temp)==int(unique_month[k]):
-					temporary=d1["submitted"]
-					if "true" not in temporary:
-						count_not_submitted=count_not_submitted+1;
-					else:
-						count_submitted=count_submitted+1;
-				temp_dic["month"]=unique_month[k];
+			#print("hi")
+			temporary=d1["submitted"]
+			if "true" not in temporary:
+				count_not_submitted=count_not_submitted+1;
+			else:
+				count_submitted=count_submitted+1;
+	temp_dic["year"]=unique_year[i];
 	#temp_dic["submitted"]=count_submitted;
 	#temp_dic["not submitted"]=count_not_submitted;
-				count_projects=count_submitted+count_not_submitted;
-				temp_dic["project_count"]=count_projects
-				submitted_dic[unique_month[k]]=count_submitted;
-				not_submitted_dic[unique_month[k]]=count_not_submitted;
-				final_array.append(temp_dic);
+	count_projects=count_submitted+count_not_submitted;
+	temp_dic["project_count"]=count_projects
+	submitted_dic[unique_year[i]]=count_submitted;
+	not_submitted_dic[unique_year[i]]=count_not_submitted;
+	final_array.append(temp_dic);
 #print(submitted_dic)
 #print(not_submitted_dic)
-
 print(final_array)
-
-'''with open('data_final_dic_bubble.json', 'w') as outfile:
-   json.dump(final_array, outfile'''
+with open('data_final_dic_bubble.json', 'w') as outfile:
+   json.dump(final_array, outfile)
