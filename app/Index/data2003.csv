@@ -1,0 +1,5 @@
+age,population
+due date < completed date,5
+due date = completed date,18
+due date > completed date,1
+projects_notcompleted,0

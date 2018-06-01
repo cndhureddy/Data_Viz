@@ -1,0 +1,58 @@
+[
+  {
+    "status": -200,
+    "projects": 3
+  },
+  {
+    "status": -100,
+    "projects": 106
+  },
+  {
+    "status": -50,
+    "projects": 12
+  },
+  {
+    "status": -40,
+    "projects": 40
+  },
+  {
+    "status": -10,
+    "projects": 234
+  },
+  {
+    "status": 180,
+    "projects": 1
+  },
+  {
+    "status": 200,
+    "projects": 6
+  },
+  {
+    "status": 500,
+    "projects": 3
+  },
+  {
+    "status": 550,
+    "projects": 18
+  },
+  {
+    "status": 600,
+    "projects": 102
+  },
+  {
+    "status": 700,
+    "projects": 1
+  },
+  {
+    "status": 800,
+    "projects": 6
+  },
+  {
+    "status": 900,
+    "projects": 33
+  },
+  {
+    "status": 1000,
+    "projects": 2622
+  }
+]
